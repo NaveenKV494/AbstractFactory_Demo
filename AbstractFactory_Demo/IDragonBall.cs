@@ -52,59 +52,5 @@ namespace AbstractFactory_Demo
                 Console.WriteLine("Five-Star Dragon Ball: Gives accesss to Ki of all lives on earth");
             }
         }
-        // Abstract Product B: Capsule
-        public interface ICapsule
-        {
-            IDragonBall CreateDragonBall();
-        }
-
-        public class OneStarCapsule : ICapsule
-        {
-            public IDragonBall CreateDragonBall()
-            {
-                return new OneStarDragonBall();
-            }
-        }
-
-        public class TwoStarCapsule : ICapsule
-        {
-            public IDragonBall CreateDragonBall()
-            {
-                return new TwoStarDragonBall();
-            }
-        }
-
-        public class ThreeStarCapsule : ICapsule
-        {
-            public IDragonBall CreateDragonBall() 
-            {
-                return new ThreeStarDragonBall();
-            }
-        }
-
-        public class FourStarCapsule : ICapsule
-        {
-            public IDragonBall CreateDragonBall()
-            {
-                return new FourStarDragonBall();
-            }
-        }
-
-        public class DragonBallCollector
-        {
-            private ICapsule _capsule;
-
-            public DragonBallCollector(ICapsule capsule)
-            {
-                _capsule = capsule;
-            }
-
-            public void GatherDragonBalls()
-            {
-                IDragonBall dragonBall = _capsule.CreateDragonBall();
-                Console.WriteLine("Gathering Dragon Balls...");
-                dragonBall.DisplayInfo();
-            }
-        }
 
     }
