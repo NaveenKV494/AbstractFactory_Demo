@@ -1,96 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using static AbstractFactory_Demo.IDragonBall;
 
 namespace AbstractFactory_Demo
 {
-    public class Program
+    class Program
     {
-        // Abstract Product A: Dragon Ball
-        public interface IDragonBall
+        static void Main(string[] args)
         {
-            void DisplayInfo();
-        }
+            ICapsule oneStarCapsule = new OneStarCapsule();
+            DragonBallCollector collector = new DragonBallCollector(oneStarCapsule);
+            collector.GatherDragonBalls();
 
-        public class OneStarDragonBall : IDragonBall
-        {
-            public void DisplayInfo()
-            {
-                Console.WriteLine("One-Star Dragon Ball: Grants one wish when gathered with other six.");
-            }
-        }
+            ICapsule twoStarCapsule = new TwoStarCapsule();
+            collector = new DragonBallCollector(twoStarCapsule);
+            collector.GatherDragonBalls();
 
-        public class TwoStarDragonBall : IDragonBall
-        {
-            public void DisplayInfo()
-            {
-                Console.WriteLine("Two-Star Dragon Ball: Possesses unique abilities when combined.");
-            }
-        }
+            ICapsule threeStarCapsule = new ThreeStarCapsule();
+            collector = new DragonBallCollector(threeStarCapsule);
+            collector.GatherDragonBalls();
 
-        public class ThreeStarDragonBall : IDragonBall
-        {
-            public void DisplayInfo()
-            {
-                Console.WriteLine("Three-Star Dragon Ball: Gives stregth and makes you fly.");
-            }
-        }
+            ICapsule fourStarCapsule = new FourStarCapsule();
+            collector = new DragonBallCollector(fourStarCapsule);
+            collector.GatherDragonBalls();
 
-        public class FourStarDragonBall : IDragonBall
-        {
-            public void DisplayInfo()
-            {
-                Console.WriteLine("Four-Star Dragon Ball: Gives the power of 100 warriors.");
-            }
+            Console.ReadLine();
         }
-        
-        public class FiveStarDragonBall : IDragonBall
-        {
-            public void DisplayInfo()
-            {
-                Console.WriteLine("Five-Star Dragon Ball: Gives accesss to Ki of all lives on earth");
-            }
-        }
-        // Abstract Product B: Capsule
-        public interface ICapsule
-        {
-            IDragonBall CreateDragonBall();
-        }
-
-        public class OneStarCapsule : ICapsule
-        {
-            public IDragonBall CreateDragonBall()
-            {
-                return new OneStarDragonBall();
-            }
-        }
-
-        public class TwoStarCapsule : ICapsule
-        {
-            public IDragonBall CreateDragonBall()
-            {
-                return new TwoStarDragonBall();
-            }
-        }
-
-        public class ThreeStarCapsule : ICapsule
-        {
-            public IDragonBall CreateDragonBall() 
-            {
-                return new ThreeStarDragonBall();
-            }
-        }
-
-        public class FourStarCapsue : ICapsule
-        {
-            public IDragonBall CreateDragonBall()
-            {
-                return new FourStarDragonBall();
-            }
-        }
-
     }
 }
